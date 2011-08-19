@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @attendee.email %>
+</p>
+
+<p>
+  <b>Is speaker:</b>
+  <%= @attendee.is_speaker %>
+</p>
+
+<p>
+  <b>Ticket status:</b>
+  <%= @attendee.ticket_status %>
+</p>
+
+<p>
+  <b>Approval status:</b>
+  <%= @attendee.approval_status %>
+</p>
+
+<p>
+  <b>Shirt size:</b>
+  <%= @attendee.shirt_size %>
+</p>
+
+
+<%= link_to 'Edit', edit_attendee_path(@attendee) %> |
+<%= link_to 'Back', attendees_path %>

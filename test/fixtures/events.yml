@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  website: MyString
+  cfp_start: 2011-08-19
+  cfp_end: 2011-08-19
+  ticket_sales_start: 2011-08-19
+  ticket_sales_end: 2011-08-19
+  event_start: 2011-08-19
+  event_end: 2011-08-19
+  cost: 9.99
+
+two:
+  name: MyString
+  website: MyString
+  cfp_start: 2011-08-19
+  cfp_end: 2011-08-19
+  ticket_sales_start: 2011-08-19
+  ticket_sales_end: 2011-08-19
+  event_start: 2011-08-19
+  event_end: 2011-08-19
+  cost: 9.99

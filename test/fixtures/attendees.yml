@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  is_speaker: false
+  ticket_status: MyString
+  approval_status: MyString
+  shirt_size: MyString
+
+two:
+  email: MyString
+  is_speaker: false
+  ticket_status: MyString
+  approval_status: MyString
+  shirt_size: MyString
