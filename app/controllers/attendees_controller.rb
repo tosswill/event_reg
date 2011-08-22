@@ -61,7 +61,7 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       if @attendee.update_attributes(params[:attendee])
-        format.html { redirect_to(@attendee, :notice => 'Attendee was successfully updated.') }
+        format.html { redirect_to(@attendee.event , :notice => 'Attendee was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

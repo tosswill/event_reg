@@ -4,7 +4,7 @@
 <div class='row'>
 	 <div class="span6 columns">
 		<h2> <%= @event.name  %></h2>  
-		 <%= @event.website %>
+		 <%= link_to @event.website , 'http://' + @event.website %>
 	</div>
 	<div class="span4 columns offset6 right-text">
 		<h3><%= @event.event_start.strftime( '%b %e') %> - <%= @event.event_end.strftime( '%b %e') %></h3>
@@ -40,18 +40,18 @@
 		<th> Ticket Status </th>
 		<th> Approval </th>
 		<th> Shirt Size </th>
+		<th> </th>
 	</tr>
 	
-	<% @event.attendees.each do |at| %>
-		<%= simple_form_for at do |f|%>
+	<% @event.attendees.each do |at| %>	
 		<tr>
 			<td> <%= at.email %> </td>
 			<td> <%=  at.is_speaker ? 'X' : '' %> </td>
 			<td> <%= at.ticket_status %> </td>
 			<td> <%= at.approval_status %> </td>
 			<td> <%= at.shirt_size %> </td>
+			<td> <%= link_to 'Manage' ,edit_attendee_path(at) , :class => 'btn' %></td>
 		</tr>
-		<% end%>
 	<% end %>
 	
 	
