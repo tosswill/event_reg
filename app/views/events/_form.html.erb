@@ -1,4 +1,7 @@
+
 <%= form_for(@event) do |f| %>
+<fieldset>
+<legend>Create Event</legend>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,43 +14,66 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :cfp_start %><br />
-    <%= f.date_select :cfp_start %>
-  </div>
-  <div class="field">
-    <%= f.label :cfp_end %><br />
-    <%= f.date_select :cfp_end %>
-  </div>
-  <div class="field">
-    <%= f.label :ticket_sales_start %><br />
-    <%= f.date_select :ticket_sales_start %>
-  </div>
-  <div class="field">
-    <%= f.label :ticket_sales_end %><br />
-    <%= f.date_select :ticket_sales_end %>
-  </div>
-  <div class="field">
-    <%= f.label :event_start %><br />
-    <%= f.date_select :event_start %>
-  </div>
-  <div class="field">
-    <%= f.label :event_end %><br />
-    <%= f.date_select :event_end %>
-  </div>
-  <div class="field">
-    <%= f.label :cost %><br />
-    <%= f.text_field :cost %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	<div class='clearfix'>
+    	<%= f.label :name %>
+		<div class='input'>
+    		<%= f.text_field :name %>
+ 		</div>
+	</div>
+	
+	<div class='clearfix'>
+    	<%= f.label :website %>
+		<div class='input'>
+    		<%= f.text_field :website %>
+		</div>
+	</div>
+	
+	<div class='clearfix'>
+    	<%= f.label :cost %>
+		<div class='input'>
+    		<%= f.text_field :cost %>
+		</div>
+	</div>
+	
+	<div class='clearfix'>
+    	<%= f.label "Call for Papers" %>
+		<div class='input'>
+			<div class='inline-inputs'>		
+    		<%= f.date_select( :cfp_start , {},  { :class => 'small'} )%>
+			 until  
+			<%= f.date_select :cfp_end  , {},  { :class => 'small'} %>
+ 			</div>
+		</div>
+	</div>
+
+  
+  	<div class='clearfix'>
+    	<%= f.label 'Ticket Sales'%>
+		<div class='input'>
+			<div class='inline-inputs'>
+    			<%= f.date_select :ticket_sales_start  , {},  { :class => 'small'}  %>
+ 				until
+    			<%= f.date_select :ticket_sales_end  , {},  { :class => 'small'}  %>
+			</div>
+		</div>
+	</div>
+	
+	<div class='clearfix'>
+    	<%= f.label :event_start %>
+   		<div class='input'>
+			<div class='inline-inputs'>
+ 				<%= f.date_select :event_start  , {},  { :class => 'small'}  %>
+				until
+				<%= f.date_select :event_end   , {},  { :class => 'small'} %>
+			</div>
+		</div>
+	</div>
+  	<div class='actions'>
+		
+		<%= link_to 'Cancel', events_path %>
+		<input id="event_submit" name="commit" type="submit" value="Create" , class="btn primary">
+	</div>
+ </fieldset>   
+
 <% end %>

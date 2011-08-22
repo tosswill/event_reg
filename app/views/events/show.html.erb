@@ -1,50 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
 
-<p>
-  <b>Website:</b>
-  <%= @event.website %>
-</p>
+<div class='row'>
+	 <div class="span6 columns">
+		<h2> <%= @event.name  %></h2>  
+		 <%= @event.website %>
+	</div>
+	<div class="span4 columns offset6 right-text">
+		<h3><%= @event.event_start.strftime( '%b %e') %> - <%= @event.event_end.strftime( '%b %e') %></h3>
+	</div>
+</div>
+ 
+<div class='row' style='margin-top:20px; margin-bottom:20px'>
+	<div class="span5 columns">
+  		<h3>Call for papers</h3>
+  		<%= @event.cfp_start.strftime( '%b %e') %> - <%= @event.cfp_end.strftime( '%b %e') %>
+	</div>
+	<div class="span5 columns">
+		<h3>	Ticket sales </h3>
+  		<%= @event.event_start.strftime( '%b %e') %> - <%= @event.event_end.strftime( '%b %e') %>
+	</div>
+	
+	<div class="span6 columns right-text" >
+		<%= link_to 'Cancel', events_path %>
+		<%= link_to 'Attend' , new_attendee_path( :event_id => @event.id ) , :class => 'btn primary'%><br/>
+		<span class='help-inline'> Cost:<%= number_to_currency(@event.cost) %></span>
+	</div>
 
-<p>
-  <b>Cfp start:</b>
-  <%= @event.cfp_start %>
-</p>
+</div>
 
-<p>
-  <b>Cfp end:</b>
-  <%= @event.cfp_end %>
-</p>
+<div class='admin' style='display:none'>
+<%= link_to 'Edit', edit_event_path(@event) %> 
+</div>
 
-<p>
-  <b>Ticket sales start:</b>
-  <%= @event.ticket_sales_start %>
-</p>
-
-<p>
-  <b>Ticket sales end:</b>
-  <%= @event.ticket_sales_end %>
-</p>
-
-<p>
-  <b>Event start:</b>
-  <%= @event.event_start %>
-</p>
-
-<p>
-  <b>Event end:</b>
-  <%= @event.event_end %>
-</p>
-
-<p>
-  <b>Cost:</b>
-  <%= @event.cost %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<table class="common-table zebra-striped">
+	<tr>
+		<th> Email </th>
+		<th> Speaker </th>
+		<th> Ticket Status </th>
+		<th> Approval </th>
+		<th> Shirt Size </th>
+	</tr>
+	
+	<% @event.attendees.each do |at| %>
+		<%= simple_form_for at do |f|%>
+		<tr>
+			<td> <%= at.email %> </td>
+			<td> <%=  at.is_speaker ? 'X' : '' %> </td>
+			<td> <%= at.ticket_status %> </td>
+			<td> <%= at.approval_status %> </td>
+			<td> <%= at.shirt_size %> </td>
+		</tr>
+		<% end%>
+	<% end %>
+	
+	
+</table>

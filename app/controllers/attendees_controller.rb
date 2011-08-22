@@ -24,7 +24,8 @@ class AttendeesController < ApplicationController
   # GET /attendees/new
   # GET /attendees/new.xml
   def new
-    @attendee = Attendee.new
+    event = Event.find( params[:event_id])
+    @attendee = event.attendees.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       if @attendee.save
-        format.html { redirect_to(@attendee, :notice => 'Attendee was successfully created.') }
+        format.html { redirect_to(@attendee.event, :notice => 'Attendee was successfully created.') }
         format.xml  { render :xml => @attendee, :status => :created, :location => @attendee }
       else
         format.html { render :action => "new" }

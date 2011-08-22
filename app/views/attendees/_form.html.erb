@@ -1,4 +1,6 @@
 <%= form_for(@attendee) do |f| %>
+<fieldset>
+<legend>Attend: <%= @attendee.event_name %></legend>
   <% if @attendee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
@@ -11,27 +13,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :is_speaker %><br />
-    <%= f.check_box :is_speaker %>
-  </div>
-  <div class="field">
-    <%= f.label :ticket_status %><br />
-    <%= f.text_field :ticket_status %>
-  </div>
-  <div class="field">
-    <%= f.label :approval_status %><br />
-    <%= f.text_field :approval_status %>
-  </div>
-  <div class="field">
-    <%= f.label :shirt_size %><br />
-    <%= f.text_field :shirt_size %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
+	<div class='clearfix'>
+		<%= f.label 'Email'%>
+		<div class='input'>
+     		<%= f.text_field :email %>
+		</div>
+	</div>
+	<div class="clearfix">
+    	<label id="is_speaking">Speaking?</label>
+        <div class="input">
+          <ul class="inputs-list">
+            <li>
+              <label>
+               <%= f.check_box :is_speaker  %>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  
+	<div class='clearfix'>
+		<%= f.label 'Ticket'%>
+		<div class='input'>
+    		<%= f.select :ticket_status , Attendee::TICKET_STATUS  %><br />
+		</div>
+  	</div>
+ 	
+	<div class='clearfix'>
+		<%= f.label 'Approval'%>
+		<div class='input'>
+    		<%= f.select :approval_status , Attendee::APPROVAL_STATUS  %>
+		</div>
+	</div>
+
+	<div class='clearfix'>
+		<%= f.label 'Shirt size'%>
+		<div class='input'>
+    		<%= f.select :shirt_size ,  Attendee::SHIRT_SIZE  %>
+		</div>
+	</div>
+	<div style='display:none'>
+    	<%= f.text_field :event_id %>
+	</div>
+	<div class='actions'>
+  	<%= link_to 'Cancel', attendees_path %>
+	<input id="attendee_submit" name="commit" type="submit" value="Confirm" , class="btn primary">
+
+	</div>
+
 <% end %>

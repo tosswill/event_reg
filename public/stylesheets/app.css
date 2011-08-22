@@ -1,0 +1,17 @@
+#event_list{
+	border-top: 1px solid #999;
+	width:100%;
+}
+#app{
+	width:600px;
+	margin: 0 auto;
+	border: 1px solid #999;
+	padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #ccc;
+}
+table{ 
+	width:100%;
+	}
