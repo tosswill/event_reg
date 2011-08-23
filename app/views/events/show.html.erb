@@ -27,8 +27,10 @@
 		<% if can_manage? %>
 			<%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete  , :class => 'btn'%>
 		<% end %>
-		<br/>
-		<span class='help-inline'> Cost:<%= number_to_currency(@event.cost) %></span>
+		<% if @event.cost %>
+			<br/>
+			<span class='help-inline'> Cost:<%= number_to_currency(@event.cost) %></span>
+		<% end %>
 	</div>
 
 </div>
