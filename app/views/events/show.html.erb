@@ -23,7 +23,11 @@
 	
 	<div class="span6 columns right-text" >
 		<%= link_to 'Cancel', events_path %>
-		<%= link_to 'Attend' , new_attendee_path( :event_id => @event.id ) , :class => 'btn primary'%><br/>
+		<%= link_to 'Attend' , new_attendee_path( :event_id => @event.id ) , :class => 'btn primary'%>
+		<% if can_manage? %>
+			<%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete  , :class => 'btn'%>
+		<% end %>
+		<br/>
 		<span class='help-inline'> Cost:<%= number_to_currency(@event.cost) %></span>
 	</div>
 
