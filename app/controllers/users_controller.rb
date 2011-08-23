@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_filter :login_required, :except => [:new, :create]
 
+  def index
+    @users = User.all
+  end
   def new
     @user = User.new
   end
+
 
   def create
     @user = User.new(params[:user])

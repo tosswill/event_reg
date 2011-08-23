@@ -1,6 +1,8 @@
 class AttendeesController < ApplicationController
   # GET /attendees
   # GET /attendees.xml
+  load_and_authorize_resource
+  
   def index
     @attendees = Attendee.all
 

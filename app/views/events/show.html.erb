@@ -40,7 +40,9 @@
 		<th> Ticket Status </th>
 		<th> Approval </th>
 		<th> Shirt Size </th>
-		<th> </th>
+		<% if can_manage? %>
+			<th> </th>
+		<% end %>
 	</tr>
 	
 	<% @event.attendees.each do |at| %>	
@@ -50,7 +52,9 @@
 			<td> <%= at.ticket_status %> </td>
 			<td> <%= at.approval_status %> </td>
 			<td> <%= at.shirt_size %> </td>
-			<td> <%= link_to 'Manage' ,edit_attendee_path(at) , :class => 'btn' %></td>
+			<% if can_manage? %>
+				<td> <%= link_to 'Manage' ,edit_attendee_path(at) , :class => 'btn' %></td>
+			<% end %>
 		</tr>
 	<% end %>
 	

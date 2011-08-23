@@ -16,7 +16,12 @@
 		<div class='container'>
 			<h3><%= link_to 'Event Reg' , root_url %></h3>
 			<ul class='nav secondary-nav'>
-				<li> <%= link_to 'Login' , login_path %> </li>
+				<% if current_user %>
+					<li><%=  link_to current_user.username , users_path %></li>
+					<li><%= link_to 'Logout' , logout_path %> </li>
+				<% else %>
+					<li> <%= link_to 'Login' , login_path %> </li>
+				<% end %>
 			</ul>
 		</div>
 	</div>

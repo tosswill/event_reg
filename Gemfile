@@ -11,3 +11,5 @@ gem "pg", :group => :production
 
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "mocha", :group => :test
+
+gem "cancan"

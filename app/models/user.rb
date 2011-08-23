@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     self.password_hash == encrypt_password(pass)
   end
 
+
   private
 
   def prepare_password
