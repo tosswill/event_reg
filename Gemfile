@@ -13,3 +13,5 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "mocha", :group => :test
 
 gem "cancan"
+
+gem "airbrake", "~> 3.0.rc2"
